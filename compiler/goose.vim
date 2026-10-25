@@ -10,5 +10,7 @@ if exists(":CompilerSet") != 2
     command -nargs=* CompilerSet setlocal <args>
 endif
 
+CompilerSet makeprg=goose\ $*\ \"%\"
+
 let &cpo = s:save_cpo
 unlet s:save_cpo

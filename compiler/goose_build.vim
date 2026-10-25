@@ -2,7 +2,8 @@
 if exists('current_compiler')
   finish
 endif
-runtime compiler/gooselang.vim
+
+runtime compiler/goose.vim
 let current_compiler = 'goose_build'
 
 let s:save_cpo = &cpo
@@ -14,9 +15,9 @@ if exists(':CompilerSet') != 2
 endif
 
 if exists('g:goose_build_makeprg_params')
-	execute 'CompilerSet makeprg=zig\ build\ '.escape(g:goose_build_makeprg_params, ' \|"').'\ $*'
+	execute 'CompilerSet makeprg=goose\ build\ '.escape(g:goose_build_makeprg_params, ' \|"').'\ $*'
 else
-	CompilerSet makeprg=goose\ build\ $*
+    CompilerSet makeprg=goose\ build\ $*\ \"%\"
 endif
 
 let &cpo = s:save_cpo
