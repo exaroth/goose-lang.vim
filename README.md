@@ -20,7 +20,9 @@ Restart Vim, execute `:PlugInstall`
 
 ### Compiler support
 
-Plugin supports rudimentary support for goose compiler via `goose build` command, to compile current file execute `:make`, make sure `goose` compiler is in `$PATH`
+Plugin supports rudimentary support for goose compiler via `goose build` command, to compile current file execute `:make`, make sure `goose` compiler is in `$PATH`.
+
+For LSP integration see [https://github.com/aardappel/goose/blob/master/docs/editors.md#neovim](https://github.com/aardappel/goose/blob/master/docs/editors.md#neovim).
 
 ### License
 
