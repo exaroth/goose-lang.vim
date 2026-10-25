@@ -1,0 +1,27 @@
+## goose-lang.vim
+
+This plugin adds support for [Goose](https://aardappel.github.io/goose/index.html) language in both Vim/NeoVim including syntax highlighting, indentation and rudimentary compiler integration.
+
+### Installation
+
+#### via `Vundle`:
+
+Add `Plugin 'exaroth/goose-lang.vim'`, restart Vim and execute `:BundleInstall`.
+
+#### via `Plug`
+
+Add `Plug 'exaroth/goose-lang.vim'` inside the `plug` command:
+```vim
+call plug#begin('~/.vim/plugged')
+    Plug 'exaroth/goose-lang.vim'
+call plug#end()
+```
+Restart Vim, execute `:PlugInstall`
+
+### Compiler support
+
+Plugin supports rudimentary support for goose compiler via `goose build` command,  execute `:make` to compile current file, make sure `goose` compiler is in `$PATH`
+
+### License
+
+See `LICENCE` for details.
