@@ -28,15 +28,15 @@ syntax keyword gooseType c_char c_short c_ushort c_int c_uint c_long c_ulong c_l
 
 
 syntax keyword gooseDummy _
-syntax keyword goosePreProc inline extern export simd recursive thread_fn
+syntax keyword goosePreProc inline extern export simd recursive thread_fn pad reusable
 
+syntax keyword gooseSpecial print str format assert abort hardware_threads thread_spawn thread_spawn_contained thread_wait gooseSpecial qput qget qpoll qlimit default copy to_bytes bytes_of from_bytes embed_shader embed_file index_of push append pop pop_n resize clear alloc_index alloc_ref free alloc_slice realloc_slice free_slice
 
 " ===== MATCH
 syntax match gooseType "\v<[iu][1-9]\d*>"
 syntax match gooseOperator display "\V\[-+/*=^&?|!><%~]"
 syntax match gooseArrowCharacter display "\V->"
 
-"                                     12_34  (. but not ..)? (12_34)?     (exponent  12_34)?
 syntax match gooseDecNumber display   "\v<\d%(_?\d)*%(\.\.@!)?%(\d%(_?\d)*)?%([eE][+-]?\d%(_?\d)*)?"
 syntax match gooseHexNumber display "\v<0x\x%(_?\x)*%(\.\.@!)?%(\x%(_?\x)*)?%([pP][+-]?\d%(_?\d)*)?"
 syntax match gooseOctNumber display "\v<0o\o%(_?\o)*"
