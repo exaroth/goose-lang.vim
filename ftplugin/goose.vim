@@ -7,7 +7,7 @@ let b:did_ftplugin = 1
 let s:cpo_orig = &cpo
 set cpo&vim
 
-compiler gooselang_build
+compiler goose_build
 
 
 setlocal formatoptions-=t formatoptions+=croql

@@ -13,7 +13,7 @@ set cpo&vim
 " ===== KWD
 syntax keyword gooseKeyword var let const fn import type as from namespace
 syntax keyword gooseConditional if else switch
-syntax keyword gooseRepeat while for in match
+syntax keyword gooseRepeat while for in match loop
 syntax keyword gooseBoolean true false
 syntax keyword gooseGuard guard
 syntax keyword gooseNull null
