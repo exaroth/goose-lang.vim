@@ -11,16 +11,16 @@ set cpo&vim
 
 
 " ===== KWD
-syntax keyword gooseKeyword var let const fn import type as from namespace
+syntax keyword gooseKeyword fn type as from namespace in
+syntax keyword gooseDecl var let const import
 syntax keyword gooseConditional if else switch
-syntax keyword gooseRepeat while for in match loop
+syntax keyword gooseRepeat while for match loop
 syntax keyword gooseBoolean true false
 syntax keyword gooseGuard guard
 syntax keyword gooseNull null
 syntax keyword gooseStatement return break continue
 
 syntax keyword gooseStructure struct enum
-
 
 syntax keyword gooseType bool void type self varint
 syntax keyword gooseType u2 u8 u16 f16 f32 f64 f80 f128 i8 i16 i32 i64 i128
@@ -49,15 +49,15 @@ syntax match gooseCharacter /'\([^\\]\|\\\([nrt\\'"]\|x\x\{2}\|u{\x\+}\)\)'/ con
 
 syntax region gooseBlock start="{" end="}" transparent fold
 
-syntax region gooseCommentLine start="//" end="$" contains=gooseTodo,@Spell
-syntax region gooseCommentLineDoc start="//[/!]/\@!" end="$" contains=gooseTodo,@Spell
+syntax region gooseCommentLine start="//" end="$" contains=gooseTodo
+syntax region gooseCommentLineDoc start="//[/!]/\@!" end="$" contains=gooseTodo
 
 syntax match gooseMultilineStringPrefix /c\?\\\\/ contained containedin=gooseMultilineString
 syntax region gooseMultilineString matchgroup=gooseMultilineStringDelimiter start="c\?\\\\" end="$" contains=gooseMultilineStringPrefix display
 
 syntax keyword gooseTodo contained TODO
 
-syntax region gooseString matchgroup=gooseStringDelimiter start=+c\?"+ skip=+\\\\\|\\"+ end=+"+ oneline contains=gooseEscape,gooseEscapeError,@Spell
+syntax region gooseString matchgroup=gooseStringDelimiter start=+c\?"+ skip=+\\\\\|\\"+ end=+"+ oneline contains=gooseEscape,gooseEscapeError
 syntax match gooseEscapeError   display contained /\\./
 syntax match gooseEscape        display contained /\\\([nrt\\'"]\|x\x\{2}\|u{\x\+}\)/
 
@@ -93,11 +93,12 @@ highlight default link gooseArrowCharacter gooseOperator
 highlight default link gooseOperator Operator
 highlight default link gooseStructure Structure
 highlight default link gooseStatement Statement
+highlight default link gooseDecl Statement
 highlight default link gooseConditional Conditional
-highlight default link gooseRepeat Repeat
 highlight default link gooseRepeat Repeat
 highlight default link gooseSpecial Special
 highlight default link goosePreProc PreProc
+
 
 
 let b:current_syntax = "goose"
