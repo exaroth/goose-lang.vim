@@ -66,8 +66,7 @@ syntax region gooseSlice start="\[" end="\]" contains=gooseSliceOperator,gooseSl
 
 syntax match gooseFunctionName contained ".*"
 syntax region gooseFunctionOp start="fn " end="(" contains=gooseFunctionName
-
-syntax match gooseFnName "[^ =:;([]\+" contained
+syntax match gooseFnName "[^ =:;<([]\+" contained
 
 
 " ===== DEFAULT
