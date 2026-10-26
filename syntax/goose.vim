@@ -20,8 +20,6 @@ syntax keyword gooseGuard guard
 syntax keyword gooseNull null
 syntax keyword gooseStatement return break continue
 
-syntax keyword gooseStructure struct enum
-syntax keyword gooseFn fn nextgroup=gooseFnName skipwhite
 
 syntax keyword gooseType bool void type self varint
 syntax keyword gooseType u2 u8 u16 f16 f32 f64 f80 f128 i8 i16 i32 i64 i128
@@ -66,10 +64,18 @@ syntax region gooseSlice start="\[" end="\]" contains=gooseSliceOperator,gooseSl
 
 
 syntax keyword gooseFn fn nextgroup=gooseFnName skipwhite
-
 syntax match gooseFnName "[^ =:;<([]\+" contained nextgroup=gooseGeneric
 syntax region gooseGeneric start="<" end=">" contained contains=gooseGenericVal,gooseType
 syntax match gooseGenericVal "[A-Za-z]*" contained
+
+
+syntax keyword gooseStruct struct nextgroup=gooseStructName skipwhite
+syntax match gooseStructName "[^ =:;<([]\+" contained
+
+syntax keyword gooseEnum enum nextgroup=gooseEnumName skipwhite
+syntax match gooseEnumName "[^ =:;<([]\+" contained
+
+
 
 highlight default link gooseGenericVal Special
 
@@ -102,7 +108,6 @@ highlight default link gooseNull Constant
 highlight default link gooseNumber Number
 highlight default link gooseArrowCharacter gooseOperator
 highlight default link gooseOperator Operator
-highlight default link gooseStructure Structure
 highlight default link gooseStatement Statement
 highlight default link gooseDecl Statement
 highlight default link gooseConditional Conditional
@@ -111,8 +116,14 @@ highlight default link gooseSpecial Special
 highlight default link gooseSliceOperator Repeat
 highlight default link gooseSliceIndex Number
 highlight default link goosePreProc PreProc
+
 highlight default link gooseFnName Function
-highlight default link gooseFn gooseKeyword
+highlight default link gooseStructName Function
+highlight default link gooseEnumName Function
+
+highlight default link gooseFn Structure
+highlight default link gooseStruct Structure
+highlight default link gooseEnum Structure
 
 
 let b:current_syntax = "goose"
