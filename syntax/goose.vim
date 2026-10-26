@@ -64,8 +64,6 @@ syntax match gooseSliceOperator contained "[.:><]"
 syntax match gooseSliceIndex display contained "\d"
 syntax region gooseSlice start="\[" end="\]" contains=gooseSliceOperator,gooseSliceIndex
 
-syntax match gooseFunctionName contained ".*"
-syntax region gooseFunctionOp start="fn " end="(" contains=gooseFunctionName
 syntax match gooseFnName "[^ =:;<([]\+" contained
 
 
