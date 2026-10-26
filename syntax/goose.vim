@@ -36,6 +36,8 @@ syntax keyword gooseSpecial print str format assert abort hardware_threads threa
 syntax match gooseType "\v<[iu][1-9]\d*>"
 syntax match gooseOperator display "\V\[-+/*=^&?|!><%~]"
 syntax match gooseArrowCharacter display "\V->"
+syntax match gooseArray display "\V->"
+
 
 syntax match gooseDecNumber display   "\v<\d%(_?\d)*%(\.\.@!)?%(\d%(_?\d)*)?%([eE][+-]?\d%(_?\d)*)?"
 syntax match gooseHexNumber display "\v<0x\x%(_?\x)*%(\.\.@!)?%(\x%(_?\x)*)?%([pP][+-]?\d%(_?\d)*)?"
@@ -52,14 +54,16 @@ syntax region gooseBlock start="{" end="}" transparent fold
 syntax region gooseCommentLine start="//" end="$" contains=gooseTodo
 syntax region gooseCommentLineDoc start="//[/!]/\@!" end="$" contains=gooseTodo
 
-syntax match gooseMultilineStringPrefix /c\?\\\\/ contained containedin=gooseMultilineString
-syntax region gooseMultilineString matchgroup=gooseMultilineStringDelimiter start="c\?\\\\" end="$" contains=gooseMultilineStringPrefix display
-
 syntax keyword gooseTodo contained TODO
 
 syntax region gooseString matchgroup=gooseStringDelimiter start=+c\?"+ skip=+\\\\\|\\"+ end=+"+ oneline contains=gooseEscape,gooseEscapeError
 syntax match gooseEscapeError   display contained /\\./
 syntax match gooseEscape        display contained /\\\([nrt\\'"]\|x\x\{2}\|u{\x\+}\)/
+
+syntax match gooseSliceOperator contained "[.:><]"
+syntax match gooseSliceIndex display contained "\d"
+syntax region gooseSlice start="\[" end="\]" contains=gooseSliceOperator,gooseSliceIndex
+
 
 
 " ===== DEFAULT
@@ -97,6 +101,8 @@ highlight default link gooseDecl Statement
 highlight default link gooseConditional Conditional
 highlight default link gooseRepeat Repeat
 highlight default link gooseSpecial Special
+highlight default link gooseSliceOperator Repeat
+highlight default link gooseSliceIndex Number
 highlight default link goosePreProc PreProc
 
 
