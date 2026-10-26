@@ -24,6 +24,10 @@ Plugin supports rudimentary support for goose compiler via `goose build` command
 
 For LSP integration see [https://github.com/aardappel/goose/blob/master/docs/editors.md#neovim](https://github.com/aardappel/goose/blob/master/docs/editors.md#neovim).
 
+### Global configuration options
+
+- `goose_use_default_make` - Set it to 1 to use default target defined in `Makefile` instead of running goose `build` command directly when executing `:make` command.
+- `goose_build_makeprg_params` - Any additional arguments to pass to goose `build` command.
 ### License
 
 See `LICENCE` for details.

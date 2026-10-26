@@ -1,6 +1,11 @@
-
 if exists('current_compiler')
   finish
+endif
+
+if exists('g:goose_use_default_make') == 1
+    if g:goose_use_default_make == 1
+        finish
+    endif
 endif
 
 runtime compiler/goose.vim
@@ -15,7 +20,7 @@ if exists(':CompilerSet') != 2
 endif
 
 if exists('g:goose_build_makeprg_params')
-	execute 'CompilerSet makeprg=goose\ build\ '.escape(g:goose_build_makeprg_params, ' \|"').'\ $*'
+	execute 'CompilerSet makeprg=goose\ build\ '.escape(g:goose_build_makeprg_params, ' \|"').'\ $*\ \"%\"'
 else
     CompilerSet makeprg=goose\ build\ $*\ \"%\"
 endif
