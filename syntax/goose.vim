@@ -64,8 +64,14 @@ syntax match gooseSliceOperator contained "[.:><]"
 syntax match gooseSliceIndex display contained "\d"
 syntax region gooseSlice start="\[" end="\]" contains=gooseSliceOperator,gooseSliceIndex
 
-syntax match gooseFnName "[^ =:;<([]\+" contained
 
+syntax keyword gooseFn fn nextgroup=gooseFnName skipwhite
+
+syntax match gooseFnName "[^ =:;<([]\+" contained nextgroup=gooseGeneric
+syntax region gooseGeneric start="<" end=">" contained contains=gooseGenericVal,gooseType
+syntax match gooseGenericVal "[A-Za-z]*" contained
+
+highlight default link gooseGenericVal Special
 
 " ===== DEFAULT
 
