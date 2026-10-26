@@ -121,9 +121,9 @@ highlight default link gooseFnName Function
 highlight default link gooseStructName Function
 highlight default link gooseEnumName Function
 
-highlight default link gooseFn Structure
-highlight default link gooseStruct Structure
-highlight default link gooseEnum Structure
+highlight default link gooseFn Keyword
+highlight default link gooseStruct Keyword
+highlight default link gooseEnum Keyword
 
 
 let b:current_syntax = "goose"
