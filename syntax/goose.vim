@@ -11,7 +11,7 @@ set cpo&vim
 
 
 " ===== KWD
-syntax keyword gooseKeyword fn type as from namespace in
+syntax keyword gooseKeyword type as from namespace in
 syntax keyword gooseDecl var let const import
 syntax keyword gooseConditional if else switch
 syntax keyword gooseRepeat while for match loop
@@ -21,6 +21,7 @@ syntax keyword gooseNull null
 syntax keyword gooseStatement return break continue
 
 syntax keyword gooseStructure struct enum
+syntax keyword gooseFn fn nextgroup=gooseFnName skipwhite
 
 syntax keyword gooseType bool void type self varint
 syntax keyword gooseType u2 u8 u16 f16 f32 f64 f80 f128 i8 i16 i32 i64 i128
@@ -36,7 +37,6 @@ syntax keyword gooseSpecial print str format assert abort hardware_threads threa
 syntax match gooseType "\v<[iu][1-9]\d*>"
 syntax match gooseOperator display "\V\[-+/*=^&?|!><%~]"
 syntax match gooseArrowCharacter display "\V->"
-syntax match gooseArray display "\V->"
 
 
 syntax match gooseDecNumber display   "\v<\d%(_?\d)*%(\.\.@!)?%(\d%(_?\d)*)?%([eE][+-]?\d%(_?\d)*)?"
@@ -64,6 +64,10 @@ syntax match gooseSliceOperator contained "[.:><]"
 syntax match gooseSliceIndex display contained "\d"
 syntax region gooseSlice start="\[" end="\]" contains=gooseSliceOperator,gooseSliceIndex
 
+syntax match gooseFunctionName contained ".*"
+syntax region gooseFunctionOp start="fn " end="(" contains=gooseFunctionName
+
+syntax match gooseFnName "[^ =:;([]\+" contained
 
 
 " ===== DEFAULT
@@ -104,7 +108,8 @@ highlight default link gooseSpecial Special
 highlight default link gooseSliceOperator Repeat
 highlight default link gooseSliceIndex Number
 highlight default link goosePreProc PreProc
-
+highlight default link gooseFnName Function
+highlight default link gooseFn gooseKeyword
 
 
 let b:current_syntax = "goose"
