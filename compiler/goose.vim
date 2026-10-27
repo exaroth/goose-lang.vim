@@ -2,10 +2,8 @@ if exists("current_compiler")
     finish
 endif
 
-if exists('g:goose_use_default_make')
-    if g:goose_use_default_make == 1
-        finish
-    endif
+if get(g:, 'goose_use_default_make', 0)
+    finish
 endif
 
 let current_compiler = "goose"

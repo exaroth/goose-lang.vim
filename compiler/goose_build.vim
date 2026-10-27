@@ -2,13 +2,12 @@ if exists('current_compiler')
   finish
 endif
 
-if exists('g:goose_use_default_make') == 1
-    if g:goose_use_default_make == 1
-        finish
-    endif
+if get(g:, 'goose_use_default_make', 0)
+    finish
 endif
 
 runtime compiler/goose.vim
+
 let current_compiler = 'goose_build'
 
 let s:save_cpo = &cpo
