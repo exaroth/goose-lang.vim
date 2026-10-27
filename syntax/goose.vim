@@ -64,6 +64,7 @@ syntax region gooseSlice start="\[" end="\]" contains=gooseSliceOperator,gooseSl
 
 
 syntax keyword gooseFn fn nextgroup=gooseFnName skipwhite
+syntax keyword gooseThreadFn thread_fn nextgroup=gooseFnName skipwhite
 syntax match gooseFnName "[^ =:;<([]\+" contained nextgroup=gooseGeneric
 syntax region gooseGeneric start="<" end=">" contained contains=gooseGenericVal,gooseType
 syntax match gooseGenericVal "[A-Za-z]*" contained
@@ -122,6 +123,7 @@ highlight default link gooseStructName Function
 highlight default link gooseEnumName Function
 
 highlight default link gooseFn Keyword
+highlight default link gooseThreadFn Keyword
 highlight default link gooseStruct Keyword
 highlight default link gooseEnum Keyword
 
