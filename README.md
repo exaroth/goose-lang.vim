@@ -6,7 +6,13 @@ This plugin adds support for [Goose](https://aardappel.github.io/goose/index.htm
 
 - via `Vundle`:
 
-Add `Plugin 'exaroth/goose-lang.vim'` line to your `.vimrc`, restart Vim and execute `:BundleInstall`.
+Add 
+
+```vim
+Plugin 'exaroth/goose-lang.vim'
+```
+
+line to your `.vimrc`, restart Vim and execute `:BundleInstall`.
 
 - via `Plug`
 
