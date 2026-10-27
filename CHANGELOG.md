@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Fixed
 - Fix `thread_fn` display
+### Added
+- Add option for highlighting builtin functions
+- Add highlight for import operator
 ## [0.1.2] 2026-10-27
 ### Added
 - Add `g:goose_build_and_run` and `g:goose_compiler_path` config settings.

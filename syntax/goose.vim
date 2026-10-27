@@ -34,6 +34,8 @@ syntax keyword gooseSpecial print str format assert abort hardware_threads threa
 " ===== MATCH
 syntax match gooseType "\v<[iu][1-9]\d*>"
 syntax match gooseOperator display "\V\[-+/*=^&?|!><%~]"
+syntax match gooseImportOperator display "[:]\{2}"
+syntax match gooseLooseRangeOperator display "[.]\{2}"
 syntax match gooseArrowCharacter display "\V->"
 
 
@@ -41,6 +43,7 @@ syntax match gooseDecNumber display   "\v<\d%(_?\d)*%(\.\.@!)?%(\d%(_?\d)*)?%([e
 syntax match gooseHexNumber display "\v<0x\x%(_?\x)*%(\.\.@!)?%(\x%(_?\x)*)?%([pP][+-]?\d%(_?\d)*)?"
 syntax match gooseOctNumber display "\v<0o\o%(_?\o)*"
 syntax match gooseBinNumber display "\v<0b[01]%(_?[01])*"
+
 
 syntax match gooseCharacterInvalid display contained /b\?'\zs[\n\r\t']\ze'/
 syntax match gooseCharacterInvalidUnicode display contained /b'\zs[^[:cntrl:][:graph:][:alnum:][:space:]]\ze'/
@@ -113,10 +116,11 @@ highlight default link gooseStatement Statement
 highlight default link gooseDecl Statement
 highlight default link gooseConditional Conditional
 highlight default link gooseRepeat Repeat
-highlight default link gooseSpecial Special
 highlight default link gooseSliceOperator Repeat
 highlight default link gooseSliceIndex Number
 highlight default link goosePreProc PreProc
+highlight default link gooseImportOperator Delimiter
+highlight default link gooseLooseRangeOperator Operator
 
 highlight default link gooseFnName Function
 highlight default link gooseStructName Function
@@ -127,6 +131,10 @@ highlight default link gooseThreadFn Keyword
 highlight default link gooseStruct Keyword
 highlight default link gooseEnum Keyword
 
+
+if get(g:, 'goose_highlight_builtin_functions', 0)
+	highlight default link gooseSpecial Special
+endif
 
 let b:current_syntax = "goose"
 

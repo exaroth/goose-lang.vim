@@ -6,7 +6,7 @@ This plugin adds support for [Goose](https://aardappel.github.io/goose/index.htm
 
 - via `Vundle`:
 
-Add 
+Add
 
 ```vim
 Plugin 'exaroth/goose-lang.vim'
@@ -33,9 +33,10 @@ For LSP integration see [https://github.com/aardappel/goose/blob/master/docs/edi
 ### Global configuration options
 
 - `goose_compiler_path` - Path to goose compiler (optional), set if compiler is not in `$PATH`.
-- `goose_use_default_make` - Set it to 1 to use default target defined in `Makefile` instead of running goose `build` command directly when executing `:make` command.
+- `goose_use_default_make` - Set it to 1 to use default target defined in `Makefile` instead of running goose `build` command directly when executing `:make` command. (default `0`)
 - `goose_build_makeprg_params` - Any additional arguments to pass to goose `build` command.
-- `goose_build_and_run` - Use `run` command instead of `build` when executing `:make`
+- `goose_build_and_run` - Use `run` command instead of `build` when executing `:make` (default `0`)
+- `goose_highlight_builtin_functions` - Whether or not to highlight goose builtin functions (`print`, `format` etc.) (default `0`)
 ### License
 
 See `LICENCE` for details.
