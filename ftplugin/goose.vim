@@ -15,7 +15,7 @@ setlocal suffixesadd=.goose
 setlocal iskeyword+=@-@
 
 if has('comments')
-    setlocal comments=:///,://!,://
+    setlocal comments=://!,://
     setlocal commentstring=//\ %s
 endif
 

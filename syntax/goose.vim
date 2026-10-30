@@ -52,6 +52,8 @@ syntax region gooseBlock start="{" end="}" transparent fold
 syntax region gooseCommentLine start="//" end="$" contains=gooseTodo
 syntax region gooseCommentLineDoc start="//[/!]/\@!" end="$" contains=gooseTodo
 
+syntax region gooseCommentMulti start="/\*" end="\*/" fold
+
 syntax keyword gooseTodo contained TODO
 
 syntax region gooseString matchgroup=gooseStringDelimiter start=+c\?"+ skip=+\\\\\|\\"+ end=+"+ oneline contains=gooseEscape,gooseEscapeError
@@ -92,6 +94,7 @@ highlight default link gooseType Type
 highlight default link gooseCommentLine Comment
 highlight default link gooseCommentLineDoc Comment
 highlight default link gooseDummy Comment
+highlight default link gooseCommentMulti Comment
 highlight default link gooseTodo Todo
 highlight default link gooseString String
 highlight default link gooseStringDelimiter String
