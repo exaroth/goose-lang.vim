@@ -11,15 +11,12 @@ set cpo&vim
 
 
 " ===== KWD
-syntax keyword gooseKeyword type as from namespace in
+syntax keyword gooseKeyword type as from namespace in upto return break continue guard
 syntax keyword gooseDecl var let const import
 syntax keyword gooseConditional if else switch
 syntax keyword gooseRepeat while for match loop
 syntax keyword gooseBoolean true false
-syntax keyword gooseGuard guard
 syntax keyword gooseNull null
-syntax keyword gooseStatement return break continue
-
 
 syntax keyword gooseType bool void type self varint
 syntax keyword gooseType u2 u8 u16 f16 f32 f64 f80 f128 i8 i16 i32 i64 i128
@@ -27,7 +24,7 @@ syntax keyword gooseType c_char c_short c_ushort c_int c_uint c_long c_ulong c_l
 
 
 syntax keyword gooseDummy _
-syntax keyword goosePreProc inline extern export simd recursive thread_fn pad reusable
+syntax keyword goosePreProc inline extern export simd recursive thread_fn pad reusable root
 
 syntax keyword gooseSpecial print str format assert abort hardware_threads thread_spawn thread_spawn_contained thread_wait gooseSpecial qput qget qpoll qlimit default copy to_bytes bytes_of from_bytes embed_shader embed_file index_of push append pop pop_n resize clear alloc_index alloc_ref free alloc_slice realloc_slice free_slice
 
@@ -112,7 +109,6 @@ highlight default link gooseNull Constant
 highlight default link gooseNumber Number
 highlight default link gooseArrowCharacter gooseOperator
 highlight default link gooseOperator Operator
-highlight default link gooseStatement Statement
 highlight default link gooseDecl Statement
 highlight default link gooseConditional Conditional
 highlight default link gooseRepeat Repeat
