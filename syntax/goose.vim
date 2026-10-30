@@ -18,13 +18,12 @@ syntax keyword gooseRepeat while for match loop
 syntax keyword gooseBoolean true false
 syntax keyword gooseNull null
 
-syntax keyword gooseType bool void type self varint
-syntax keyword gooseType u2 u8 u16 f16 f32 f64 f80 f128 i8 i16 i32 i64 i128
+syntax keyword gooseType bool void self varint
+syntax keyword gooseType u8 u16 u32 u64 f16 f32 f64 i8 i16 i32 i64
 syntax keyword gooseType c_char c_short c_ushort c_int c_uint c_long c_ulong c_longlong c_ulonglong c_longdouble
 
-
 syntax keyword gooseDummy _
-syntax keyword goosePreProc inline extern export simd recursive thread_fn pad reusable root
+syntax keyword goosePreProc inline extern export simd recursive thread_fn pad reusable root it
 
 syntax keyword gooseSpecial print str format assert abort hardware_threads thread_spawn thread_spawn_contained thread_wait gooseSpecial qput qget qpoll qlimit default copy to_bytes bytes_of from_bytes embed_shader embed_file index_of push append pop pop_n resize clear alloc_index alloc_ref free alloc_slice realloc_slice free_slice
 
