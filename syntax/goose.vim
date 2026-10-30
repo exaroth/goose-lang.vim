@@ -47,16 +47,18 @@ syntax match gooseCharacterInvalidUnicode display contained /b'\zs[^[:cntrl:][:g
 syntax match gooseCharacter /b'\([^\\]\|\\\(.\|x\x\{2}\)\)'/ contains=gooseEscape,gooseEscapeError,gooseCharacterInvalid,gooseCharacterInvalidUnicode
 syntax match gooseCharacter /'\([^\\]\|\\\([nrt\\'"]\|x\x\{2}\|u{\x\+}\)\)'/ contains=gooseEscape,gooseEscapeError,gooseCharacterInvalid
 
+syntax region gooseString matchgroup=gooseStringDelimiter start=+c\?"+ skip=+\\\\\|\\"+ end=+"+ oneline contains=gooseEscape,gooseEscapeError
+syntax region gooseMultilineString start=+"""+ end=+"""+  contains=gooseEscape,gooseEscapeError
+
+
 syntax region gooseBlock start="{" end="}" transparent fold
 
 syntax region gooseCommentLine start="//" end="$" contains=gooseTodo
 syntax region gooseCommentLineDoc start="//[/!]/\@!" end="$" contains=gooseTodo
-
 syntax region gooseCommentMulti start="/\*" end="\*/" fold
 
 syntax keyword gooseTodo contained TODO
 
-syntax region gooseString matchgroup=gooseStringDelimiter start=+c\?"+ skip=+\\\\\|\\"+ end=+"+ oneline contains=gooseEscape,gooseEscapeError
 syntax match gooseEscapeError   display contained /\\./
 syntax match gooseEscape        display contained /\\\([nrt\\'"]\|x\x\{2}\|u{\x\+}\)/
 
@@ -99,8 +101,6 @@ highlight default link gooseTodo Todo
 highlight default link gooseString String
 highlight default link gooseStringDelimiter String
 highlight default link gooseMultilineString String
-highlight default link gooseMultilineStringContent String
-highlight default link gooseMultilineStringPrefix String
 highlight default link gooseMultilineStringDelimiter Delimiter
 highlight default link gooseCharacterInvalid Error
 highlight default link gooseCharacterInvalidUnicode gooseCharacterInvalid
